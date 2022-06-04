@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: "homes#top"
+
 
   devise_for :customers,skip: [:passwords,], controllers: {
     sessions:      'customer/sessions',
@@ -10,13 +12,10 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] , controllers: {
     sessions:      'admin/sessions',
     }
-
-  root to: "homes#top"
-  post '/admin/genres/:id' => 'admin/genres#edit'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
    namespace :admin do
-    resources :genres,only: [:index,:show, :edit, :update]
-    resources :items,only: [:new,:index]
+    resources :genres,only: [:index,:show, :edit, :update,:create]
+    resources :items,only: [:new,:index,:create]
   end
 end
