@@ -1,5 +1,5 @@
 <h2>商品一覧</h2>
-
+<table>
  <thead>
     <tr>
      <th>商品id</th>
@@ -10,14 +10,21 @@
     </tr>
  </thead>
  <tbody>
-    <% @item.each do |item| %>
+    <% @item.each do |items| %>
 
     <tr>
-     <td><%= item.id %></td>
-     <td><%= item.name %></td>
-     <td><%= item.price %></td>
-     <td>genre</td>
-     <td>status</td>
+     <td><%= items.id %></td>
+     <td><%= items.name %></td>
+     <td><%= items.price %></td>
+     <td><%= items.genre_id %></td>
+     <td>
+      <% if items.is_active %>
+      <p>販売中</p>
+      <% else %>
+      <p>販売停止中</p>
+      <% end %>
+     </td>
     </tr>
     <% end %>
   </tbody>
+ </table>
