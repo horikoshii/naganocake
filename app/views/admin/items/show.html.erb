@@ -1,6 +1,41 @@
-<h2>商品詳細</h2>
+<table>
+  <thead>
+    <h2>商品詳細</h2>
+  </thead>
 
-<div>
-  <%= image_tag post_image.get_image %>
-  <p>投稿ユーザー画像：<%= image_tag %></p>
-</div>
+  <tbody>
+    <td><%= image_tag @item.get_image , size: "200x200" %></td>
+
+    <td>
+      <h2>商品名</h2>
+      <p><%= @item.name %></p>
+    </td>
+
+    <td>
+      <h2>商品説明</h2>
+      <p><%= @item.introduction %></p>
+    </td>
+
+    <td>
+      <h2>ジャンル</h2>
+      <p><%= @item.genre.name %></p>
+    </td>
+    <td>
+      <h4>税込価格<br>(税抜価格)</h4>
+      <p><%= @item.with_tax_price%></p>
+    </td>
+
+    <td>
+      <h2>販売ステータス</h2>
+      <p>
+        <% if @item.is_active %>
+        <p>販売中</p>
+        <% else %>
+        <p>販売停止中</p>
+        <% end %>
+      </p>
+    </td>
+    <td><%= link_to "編集する",edit_admin_item_path %></td>
+  </tbody>
+</table>
+
