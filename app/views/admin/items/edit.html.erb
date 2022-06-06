@@ -1,0 +1,28 @@
+<table>
+ <thead>
+  <h2>商品編集</h2>
+ </thead>
+ <tbody>
+   <%= form_with model: @item, url:admin_items_path,method: :PATCH do |f| %>
+   
+   <td>
+     <h4>商品画像</h4>
+     <p><%= f.file_field :image, accept: "image/*" %></p>
+   </td>
+   
+   <td>
+     <h4>商品名</h4>
+     <p><%= f.text_field :name %></p>
+   </td>
+   
+   <td>
+     <h4>説明</h4>
+     <p><%= f.text_area :introduction %></p>
+   </td>
+   
+   <td>
+     
+   </td>
+   <% end %>
+ </tbody>
+</table>
