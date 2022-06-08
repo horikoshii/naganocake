@@ -1,0 +1,71 @@
+<table>
+  <thead>
+    <tr>
+      <h2>
+       <p><%= customers.last_name %>
+       <%= customers.first_name %>さんの会員詳細</p>
+      </h2>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <td>
+        <p>会員ID</p>
+        <p><%= @customer.id %></p>
+      </td>
+      
+      <td>
+        <p>氏名</p>
+        <p>
+          <%= @customer.last_name %>
+          <%= @customer.first_name %>
+        </p>
+      </td>
+      
+      <td>
+        <p>フリガナ</p>
+        <p>
+          <%= @customer.last_name_kana %>
+          <%= @customer.first_name_kana %>
+        </p>
+      </td>
+      
+      <td>
+        <p>郵便番号</p>
+        <p><%= @customer.postal_code %></p>
+      </td>
+      
+      <td>
+        <p>住所</p>
+        <p><%= @customer.address %></p>
+      </td>
+      
+      <td>
+        <p>電話番号</p>
+        <p><%= @customer.telephone_number %></p>
+      </td>
+      
+      <td>
+        <p>メールアドレス</p>
+        <p><%= @customer.email %></p>
+      </td>
+      
+      <td>
+        <p>会員ステータス</p>
+        <p>
+          <%= if @customer.is_active %>
+          <p>有効</p>
+          <% else %>
+          <p>退会</p>
+          <% end %>
+        </p>
+      </td>
+      
+      <td>
+        <p><%= link_to edit_admin_customer_path %></p>
+        <p></p>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
    namespace :admin do
     resources :genres,only: [:index,:show, :edit, :update,:create]
-    resources :items,only: [:new,:index,:create,:show,:edit]
+    resources :items,only: [:new,:index,:create,:show,:edit,:update]
+    resources :customers,only: [:index,:show,:edit,:update]
   end
 end
