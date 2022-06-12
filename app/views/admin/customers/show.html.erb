@@ -1,6 +1,9 @@
-<h2><%= customer.full_name %>さんの会員詳細</h2>
+<h2>
+  <%= @customer.last_name %>
+  <%= @customer.first_name %>さんの会員詳細
+</h2>
 
- 
+
       <td>
         <p>会員ID</p>
         <p><%= @customer.id %></p>
@@ -42,16 +45,7 @@
         <p><%= @customer.email %></p>
       </td>
 
-      <td>
-        <p>会員ステータス</p>
-        <p>
-          <%= if @customer.is_active %>
-          <p>有効</p>
-          <% else %>
-          <p>退会</p>
-          <% end %>
-        </p>
-      </td>
+
 
       <td>
         <p><%= link_to edit_admin_customer_path %></p>
