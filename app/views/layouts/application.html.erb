@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -21,6 +21,85 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
          <ul class="navbar-nav ml-auto">
+
+          <% if admin_signed_in? %>
+
+           <li class="nav-item">
+            <%= link_to(admin_items_path,  class: 'nav-link text-white') do %>
+            <strong> 商品一覧 </strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(admin_customers_path,  class: 'nav-link text-white') do %>
+            <strong> 会員一覧 </strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(admin_genres_path,  class: 'nav-link text-white') do %>
+            <strong> ジャンル一覧 </strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(destroy_admin_session_path, method: :delete, class: 'nav-link text-white') do %>
+            <strong> ログアウト </strong>
+            <% end %>
+           </li>
+
+          <% elsif customer_signed_in? %>
+
+          <li class="nav-item">
+            <%= link_to(admin_customers_path,  class: 'nav-link text-white') do %>
+            <strong> マイページ </strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(admin_customers_path,  class: 'nav-link text-white') do %>
+            <strong> 商品一覧 </strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(admin_customers_path,  class: 'nav-link text-white') do %>
+            <strong> カート </strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(destroy_admin_session_path, method: :delete, class: 'nav-link text-white') do %>
+            <strong> Log out </strong>
+            <% end %>
+           </li>
+
+          <% else %>
+
+           <li class="nav-item">
+            <%= link_to(about_path,  class: 'nav-link text-white') do %>
+            <strong> About </strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(items_path,  class: 'nav-link text-white') do %>
+            <strong> 商品一覧 </strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(new_customer_registration_path,  class: 'nav-link text-white') do %>
+            <strong> 新規登録</strong>
+            <% end %>
+           </li>
+
+           <li class="nav-item">
+            <%= link_to(customer_session_path,  class: 'nav-link text-white') do %>
+            <strong> ログイン </strong>
+            <% end %>
+           </li>
+          <% end %>
          </ul>
         </div>
       </div>

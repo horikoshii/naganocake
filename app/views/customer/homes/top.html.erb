@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-4" style="background-color: orange;">
+
+      <thead>
+          <tr>ジャンル検索</tr>
+      </thead>
+
+      <tbody>
+         <% @genres.each do |genre| %>
+          <p><%= genre.name %></p>
+         <% end %>
+      </tbody>
+
+    </div>
+
+    <div class="col-lg-8">
+     <table class="table table-striped">
+
+         <h2>商品一覧</h2>
+
+       <thead>
+         <tr>
+           <th>item</th>
+           <th>item</th>
+         </tr>
+       </thead>
+
+     </table>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,81 @@
-<h1>homes/top</h1>
+<div class="container">
+ <div class="row">
+  <div class="col-lg-2" style="background-color: orange;">
+   
+   <thead>
+    <tr>ジャンル検索</tr>
+   </thead>
+   
+   <tbody>
+    <% @genres.each do |genre| %>
+    <p><%= genre.name %></p>
+    <% end %>
+   </tbody>
+  </div>
+  
+  <div class="col-lg-10">
+   <table class="table table-striped">
+    
+    <thead>
+     <tr>
+      <th></th>
+     </tr>
+    </thead>
+    
+    <tbody>
+     <tr>
+      <th>
+       <h2>
+        ようこそ、ながのCAKEへ<br>
+        このサイトは、ケーキ販売のECサイトになります<br>
+        会員でない方も閲覧はできますが、<br>
+        購入には会員登録が必要になります
+       </h2>
+      </th>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+
+  <div class="row">
+    <table class="table table-striped">
+     <tbody>
+      <tr>
+       <td>
+        <div class="col-lg-4">
+         <p>p</p>
+        </div>
+       </td>
+
+       <h2>新着商品</h2>
+
+       <td>
+        <div class="col-lg-2">
+          <p>aa</p>
+        </div>
+       </td>
+
+       <td>
+        <div class="col-lg-2">
+          <p>bb</p>
+        </div>
+       </td>
+
+       <td>
+        <div class="col-lg-2">
+          <p>cc</p>
+        </div>
+       </td>
+
+       <td>
+        <div class="col-lg-2">
+          <p>dd</p>
+        </div>
+       </td>
+      </tr>
+
+     </tbody>
+    </table>
+  </div>
+</div>
