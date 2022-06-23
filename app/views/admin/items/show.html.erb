@@ -1,35 +1,34 @@
-<h2>商品詳細</h2>
+<div class="container">
+  <h2>商品詳細</h2>
+  <div class="row">
+   <div class="col-lg-4">
+     <td><%= image_tag @item.get_image , size: "200x200" %></td>
+   </div>
 
-    <td><%= image_tag @item.get_image , size: "200x200" %></td>
+   <div class="col-lg-4">
+     <p>商品名</p>
+     <p>商品説明</p>
+     <p>ジャンル</p>
+     <p>税込価格<br>(税抜価格)</p>
+     <p>販売ステータス</p>
+   </div>
 
-    <td>
-      <h2>商品名</h2>
-      <p><%= @item.name %></p>
-    </td>
-
-    <td>
-      <h2>商品説明</h2>
-      <p><%= @item.introduction %></p>
-    </td>
-
-    <td>
-      <h2>ジャンル</h2>
-      <p><%= @item.genre.name %></p>
-    </td>
-    <td>
-      <h4>税込価格<br>(税抜価格)</h4>
-      <p><%= @item.with_tax_price%></p>
-    </td>
-
-    <td>
-      <h2>販売ステータス</h2>
-      <p>
+   <div class="col-lg-4">
+     <p><%= @item.name %></p>
+     <p><%= @item.introduction %></p>
+     <p><%= @item.genre.name %></p>
+     <p><%= @item.with_tax_price %></br>
+     (<%= @item.price %>)円</p>
+     <p>
         <% if @item.is_active %>
         <p>販売中</p>
         <% else %>
         <p>販売停止中</p>
         <% end %>
       </p>
-    </td>
-    
-    <td><%= link_to "編集する",edit_admin_item_path %></td>
+   </div>
+   <div class="row">
+     <%= link_to "編集する",edit_admin_item_path %>
+   </div>
+  </div>
+</div>

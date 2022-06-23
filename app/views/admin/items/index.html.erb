@@ -1,6 +1,8 @@
-<h2>商品一覧</h2>
-<table>
- <thead>
+<div class="container">
+ <div class="row">
+  <table class="table table-striped">
+   <h2>商品一覧</h2>
+   <thead>
     <tr>
      <th>商品id</th>
      <th>商品名</th>
@@ -8,8 +10,9 @@
      <th>ジャンル</th>
      <th>ステータス</th>
     </tr>
- </thead>
- <tbody>
+   </thead>
+
+  <tbody>
    <% @item.each do |items| %>
     <tr>
      <td><%= items.id %></td>

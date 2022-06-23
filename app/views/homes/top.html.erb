@@ -1,27 +1,27 @@
 <div class="container">
  <div class="row">
   <div class="col-lg-2" style="background-color: orange;">
-   
+
    <thead>
     <tr>ジャンル検索</tr>
    </thead>
-   
+
    <tbody>
     <% @genres.each do |genre| %>
     <p><%= genre.name %></p>
     <% end %>
    </tbody>
   </div>
-  
+
   <div class="col-lg-10">
    <table class="table table-striped">
-    
+
     <thead>
      <tr>
       <th></th>
      </tr>
     </thead>
-    
+
     <tbody>
      <tr>
       <th>
@@ -39,43 +39,27 @@
  </div>
 
   <div class="row">
-    <table class="table table-striped">
-     <tbody>
-      <tr>
-       <td>
-        <div class="col-lg-4">
-         <p>p</p>
-        </div>
-       </td>
+   <h2>新着商品</h2>
+   <% @items.each do |item| %>
 
-       <h2>新着商品</h2>
+   <div class="col-lg-3">
+    <p><%= item.name %></p>
+    <p><%= item.price %></p>
+   </div>
 
-       <td>
-        <div class="col-lg-2">
-          <p>aa</p>
-        </div>
-       </td>
+   <div class="col-lg-3">
+    <p><%= item.name %></p>
+    <p><%= item.price %></p>
+   </div>
 
-       <td>
-        <div class="col-lg-2">
-          <p>bb</p>
-        </div>
-       </td>
+   <div class="col-lg-2">
+    <p><%= item.name %></p>
+    <p><%= item.price %></p>
+   </div>
 
-       <td>
-        <div class="col-lg-2">
-          <p>cc</p>
-        </div>
-       </td>
-
-       <td>
-        <div class="col-lg-2">
-          <p>dd</p>
-        </div>
-       </td>
-      </tr>
-
-     </tbody>
-    </table>
-  </div>
+   <div class="col-lg-2">
+    <p><%= item.name %></p>
+    <p><%= item.price %></p>
+   </div>
+   <% end %>
 </div>
