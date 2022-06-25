@@ -21,9 +21,12 @@ Rails.application.routes.draw do
 
   resources :items,only: [:index]
 
-  namespace :customer do
+  scope module: :customer do
+    get "customers/unsubscribe" => "customers#unsubscribe"
+    patch "customers/withdraw" => "customers#withdraw"
     resources :items,only: [:index]
-    resources :customers,only: [:show,:edit]
+    resources :customers,only: [:show,:edit,:update,:unsubscribe,:withdraw]
+    resources :addresses,only: [:index]
   end
 
    namespace :admin do

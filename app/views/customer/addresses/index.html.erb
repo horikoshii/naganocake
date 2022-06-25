@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12"><h4>配送先登録/一覧</h4></div>
+  </div>
+  <%= form_with model: @address, url:admin_items_path,method: :POST do |f| %>
+
+   <div class="row">
+    <div class="col-lg-4">郵便番号（ハイフンなし）</div>
+    <div class="col-lg-8"><%= f.text_field :postal_code %></div>
+   </div>
+   <div class="row">
+    <div class="col-lg-6">住所</div>
+    <div class="col-lg-6"><%= f.text_field :address %></div>
+   </div>
+   <div class="row">
+    <div class="col-lg-6">宛名</div>
+    <div class="col-lg-6"><%= f.text_field :name %></div>
+   </div>
+  <% end %>
+
+  <div class="row">
+    <table class="table table-striped">
+      <div class="col-lg-6">
+        <thead>
+          <td>郵便番号</td>
+          <td>住所</td>
+          <td>宛名</td>
+          <td></td>
+        </thead>
+      </div>
+      <tbody>
+        <% @addresses.each do |address| %>
+        <td><%= address.postal_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
+        <td></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
