@@ -11,7 +11,7 @@ class Customer::CustomersController < ApplicationController
   def update
     @customer=current_customer
     @customer.update(customer_params)
-    redirect_to customer_customer_path
+    redirect_to customer_path
   end
 
   def unsubscribe
@@ -19,7 +19,11 @@ class Customer::CustomersController < ApplicationController
   end
 
   def withdraw
+    #customerの退会ステータスをfalseに更新
      @customer=current_customer
+     @customer.update(is_active: false)
+     reset_session
+     redirect_to root_path
   end
 
   private
