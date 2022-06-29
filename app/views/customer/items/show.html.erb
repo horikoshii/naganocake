@@ -1,0 +1,30 @@
+<div class="container">
+ <h2>商品一覧</h2>
+ <div class="row">
+  <div class="col-lg-2" style="background-color: orange;">
+   <table class="table table-striped">
+
+   <thead>
+    <tr>ジャンル検索</tr>
+   </thead>
+
+   <tbody>
+    <% @genres.each do |genre| %>
+    <p><%= link_to genre.name, serch_path(genre_id: genre.id) %></p>
+    <% end %>
+   </tbody>
+   </table>
+  </div>
+
+  <div class="col-lg-10">
+   <div class="row">
+     <div class="col-lg-6"><p><%= image_tag @item.image, size: "400x300" %></p></div>
+     <div class="col-lg-4">
+       <h3><strong><%= @item.name %></strong></h3>
+       <h4><%= @item.introduction %></h4>
+       <h4><%= @item.price %>(税込)</h4>
+     </div>
+   </div>
+  </div>
+ </div>
+</div>

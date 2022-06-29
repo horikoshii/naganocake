@@ -19,12 +19,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :items,only: [:index]
 
   scope module: :customer do
+    get "item/index" => "items#serch",as: "serch"
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
-    resources :items,only: [:index]
+    resources :items,only: [:index,:show]
     resources :customers,only: [:show,:edit,:update,:unsubscribe,:withdraw]
     resources :addresses,only: [:index]
   end
