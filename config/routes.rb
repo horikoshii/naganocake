@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :items,only: [:index,:show]
     resources :customers,only: [:show,:edit,:update,:unsubscribe,:withdraw]
     resources :addresses,only: [:index]
+    resources :cart_items,only: [:index,:create]
   end
 
    namespace :admin do
