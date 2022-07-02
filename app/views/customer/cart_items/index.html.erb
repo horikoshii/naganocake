@@ -1,1 +1,39 @@
-<h1>カート</h1>
+<div class="container">
+ <div class="row">
+  <div class="col-lg-4"><h2>ショッピングカート</h2></div>
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4"><%= link_to "カートを空にする", cart_items_destroy_all_path,method: :delete %></div>
+ </div>
+ <div class="row">
+  <div class="col-lg-12">
+   <table class="table table-striped">
+    <thead>
+     <tr>
+      <td>商品名</td>
+      <td>単価（税込）</td>
+      <td>数量</td>
+      <td>小計</td>
+      <td></td>
+     </tr>
+    </thead>
+    <tbody>
+     <% @cart_items.each do |cart_item| %>
+     <tr>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.item.with_tax_price %></td>
+      <td>
+       <%= form_with model: cart_item, url:cart_item_path(cart_item.id),method: :PATCH do |f| %>
+       <%= cart_item.amount %>
+       <%= f.select :amount, *[1..10] %>
+       <%= f.submit '変更' %>
+       <% end %>
+      </td>
+      <td><%= cart_item.subtotal %></td>
+      <td></td>
+     </tr>
+     <% end %>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>

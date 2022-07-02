@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
     belongs_to :genre
+    has_many :cart_items
     has_one_attached :image
-    
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -9,7 +10,7 @@ class Item < ApplicationRecord
     end
     image
   end
-  
+
   def with_tax_price
     (price * 1.1).floor
   end

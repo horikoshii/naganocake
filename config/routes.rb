@@ -21,13 +21,14 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
+    delete "cart_items/destroy_all" => "cart_items#destroy_all"
     get "item/index" => "items#serch",as: "serch"
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
-    resources :items,only: [:index,:show]
+    resources :items,only: [:index,:show,:delete,:update]
     resources :customers,only: [:show,:edit,:update,:unsubscribe,:withdraw]
     resources :addresses,only: [:index]
-    resources :cart_items,only: [:index,:create]
+    resources :cart_items,only: [:index,:create,:update,:delete,]
   end
 
    namespace :admin do
