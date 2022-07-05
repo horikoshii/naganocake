@@ -2,7 +2,7 @@
  <div class="row">
   <div class="col-lg-4"><h2>ショッピングカート</h2></div>
   <div class="col-lg-4"></div>
-  <div class="col-lg-4"><%= link_to "カートを空にする", cart_items_destroy_all_path,method: :delete %></div>
+  <div class="col-lg-4"><%= button_to "カートを空にする", cart_items_destroy_all_path,method: :delete %></div>
  </div>
  <div class="row">
   <div class="col-lg-12">
@@ -29,11 +29,19 @@
        <% end %>
       </td>
       <td><%= cart_item.subtotal %></td>
-      <td></td>
+      <td><%= button_to "削除", cart_items_destroy_path,method: :delete %></td>
      </tr>
      <% end %>
     </tbody>
    </table>
   </div>
  </div>
+  <div class="row">
+   <div class="col-lg-12">
+    <table class="table table-striped">
+     <td><%= button_to "買い物を続ける", items_path %></td>
+     <td>合計金額</td>
+     <td><%= @total.round.to_s(:delimited) %></td>
+   </div>
+  </div>
 </div>

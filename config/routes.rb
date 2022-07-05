@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
+    post "orders/comfirm" => "orders#comfirm"
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
+    delete "cart_items/destroy" => "cart_items#destroy"
     get "item/index" => "items#serch",as: "serch"
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
     resources :customers,only: [:show,:edit,:update,:unsubscribe,:withdraw]
     resources :addresses,only: [:index]
     resources :cart_items,only: [:index,:create,:update,:delete,]
+    resources :orders,only: [:new,:create]
   end
 
    namespace :admin do
