@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get "/admin", to: "admin/homes#top"
 
 
-
   devise_for :customers,skip: [:passwords,], controllers: {
     sessions:      'customer/sessions',
     registrations: 'customer/registrations'
@@ -22,6 +21,9 @@ Rails.application.routes.draw do
 
   scope module: :customer do
     post "orders/comfirm" => "orders#comfirm"
+    get "orders/comfirm" => "orders#comfirm"
+    post "orders/new" => "orders#new"
+    get "orders/complete" => "orders#complete"
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     delete "cart_items/destroy" => "cart_items#destroy"
     get "item/index" => "items#serch",as: "serch"
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
     patch "customers/withdraw" => "customers#withdraw"
     resources :items,only: [:index,:show,:delete,:update]
     resources :customers,only: [:show,:edit,:update,:unsubscribe,:withdraw]
-    resources :addresses,only: [:index]
+    resources :addresses,only: [:index,:create,:edit,:destroy,:update]
     resources :cart_items,only: [:index,:create,:update,:delete,]
     resources :orders,only: [:new,:create]
   end

@@ -23,5 +23,21 @@
     </tbody>
     </table>
    </div>
+   <div class="col-lg-2">
+     <p>送料</p>
+     <p>商品合計</p>
+     <p>請求金額</p>
+   </div>
+   <div class="col-lg-2">
+     <p>800円</p>
+     <p><%= @subtotal.round.to_s(:delimited)%></p>
+     <p><%= @total.round.to_s(:delimited)%></p>
+   </div>
+ </div>
+ <div class="row">
+  <div class="col-lg-12">
+   <strong>支払い方法</strong>
+   <p><%= @order.params[:order][:payment_method_number] %></p>
+  </div>
  </div>
 </div>
