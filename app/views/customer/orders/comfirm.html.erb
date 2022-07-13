@@ -37,7 +37,12 @@
  <div class="row">
   <div class="col-lg-12">
    <strong>支払い方法</strong>
-   <p><%= @order.params[:order][:payment_method_number] %></p>
+   <p><%= @order.payment_method_i18n %></p>
+   <strong>お届け先</strong>
+   <p>〒<%= @order.postal_code %>　<%= @order.address %>　<%= @order.name %></p>
   </div>
+ </div>
+ <div style=" display: flex: center">
+  <p><%= button_to "注文を確定する", orders_complete_path %></p>
  </div>
 </div>

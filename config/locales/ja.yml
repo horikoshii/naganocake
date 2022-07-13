@@ -36,6 +36,17 @@ ja:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
 
+  ja:
+    enums:
+      order:
+        status:
+          wait_payment: "入金待ち"
+          confirmation: "入金確認"
+          production: "製作中"
+          ready_to_ship: "発送準備中"
+          sent: "発送済み"
+
+
 en:
   hello: "Hello world"
 

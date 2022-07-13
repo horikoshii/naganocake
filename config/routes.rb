@@ -24,11 +24,13 @@ Rails.application.routes.draw do
     get "orders/comfirm" => "orders#comfirm"
     post "orders/new" => "orders#new"
     get "orders/complete" => "orders#complete"
+    post "orders/complete" => "orders#complete"
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     delete "cart_items/destroy" => "cart_items#destroy"
     get "item/index" => "items#serch",as: "serch"
     get "customers/unsubscribe" => "customers#unsubscribe"
     patch "customers/withdraw" => "customers#withdraw"
+    patch "addresses/:id/edit" => "addresses#edit"
     resources :items,only: [:index,:show,:delete,:update]
     resources :customers,only: [:show,:edit,:update,:unsubscribe,:withdraw]
     resources :addresses,only: [:index,:create,:edit,:destroy,:update]

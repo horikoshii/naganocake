@@ -6,9 +6,9 @@
     <%= form_with model: @order, url: orders_comfirm_path, method: :post do |f| %>
 
     <strong>支払い方法</strong>
-     <p><%= f.radio_button :payment_method_number,0 %>
+     <p><%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %></p>
-     <p><%= f.radio_button :payment_method_number,1 %>
+     <p><%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%></p>
     <strong>お届け先</strong>
     <p>
@@ -33,5 +33,8 @@
     <% end %>
     </table>
    </div>
+  </div>
+  <div style=" display: flex; align-items: center; width: auto; height: 500px; justify-content: center;">
+   <p><%= button_to "注文を確定する", orders_complete_path %></p>
   </div>
 </div>

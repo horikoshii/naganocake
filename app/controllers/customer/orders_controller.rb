@@ -5,6 +5,10 @@ class Customer::OrdersController < ApplicationController
     @customer = current_customer
   end
 
+  def index
+    @orders = current_customer.order.all
+  end
+
   def comfirm
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
@@ -20,14 +24,17 @@ class Customer::OrdersController < ApplicationController
       @order.postal_code = Address.new
       @order.address = Address.new
       @order.name = Address.new
-    elsif params[:order][:payment_method_number] == "0"
-      @order.payment_method = order.payment_method
-    elsif params[:order][:payment_method_number] == "1"
-      @order.payment_method = order.payment_method
     end
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @subtotal = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price } + 800
+  end
+
+  def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+    redirect_to orders_comfirm_path
   end
 
   private
