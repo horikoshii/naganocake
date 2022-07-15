@@ -23,15 +23,21 @@
     </tbody>
     </table>
    </div>
-   <div class="col-lg-2">
-     <p>送料</p>
-     <p>商品合計</p>
-     <p>請求金額</p>
-   </div>
-   <div class="col-lg-2">
-     <p>800円</p>
-     <p><%= @subtotal.round.to_s(:delimited)%></p>
-     <p><%= @total.round.to_s(:delimited)%></p>
+   <div class="col-lg-4">
+    <table class="table table-striped">
+     <tr>
+      <td>送料</td>
+      <td>800円</td>
+     </tr>
+     <tr>
+      <td>商品合計</td>
+      <td><%= @subtotal.round.to_s(:delimited)%></td>
+     </tr>
+     <tr>
+      <td>請求金額</td>
+      <td><%= @total.round.to_s(:delimited)%></td>
+     </tr>
+    </table>
    </div>
  </div>
  <div class="row">
@@ -43,6 +49,13 @@
   </div>
  </div>
  <div style=" display: flex: center">
-  <p><%= button_to "注文を確定する", orders_complete_path %></p>
+  <p>
+   <%= form_with model: @order, url: orders_complete_path do |f| %>
+   <%= f.hidden_field :name %>
+   <%= f.hidden_field :address %>
+   <%= f.hidden_field :price, valu: @total %>
+   <%= f.submit "注文を確定する" %>
+   <% end %>
+  </p>
  </div>
 </div>

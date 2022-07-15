@@ -21,7 +21,7 @@ class Customer::CustomersController < ApplicationController
   def withdraw
     #customerの退会ステータスをfalseに更新
      @customer=current_customer
-     @customer.update(is_active: false)
+     @customer.update(is_deleted: true)
      reset_session
      redirect_to root_path
   end

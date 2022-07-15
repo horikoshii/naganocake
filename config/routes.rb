@@ -20,11 +20,11 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
+    get "customers/my_page" => "customers#show", as: "my_page"
     post "orders/comfirm" => "orders#comfirm"
     get "orders/comfirm" => "orders#comfirm"
     post "orders/new" => "orders#new"
-    get "orders/complete" => "orders#complete"
-    post "orders/complete" => "orders#complete"
+    post "orders/create" => "orders#create", as: "orders/complete"
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
     delete "cart_items/destroy" => "cart_items#destroy"
     get "item/index" => "items#serch",as: "serch"
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :customers,only: [:show,:edit,:update,:unsubscribe,:withdraw]
     resources :addresses,only: [:index,:create,:edit,:destroy,:update]
     resources :cart_items,only: [:index,:create,:update,:delete,]
-    resources :orders,only: [:new,:create]
+    resources :orders,only: [:new,:create,:index,:show]
   end
 
    namespace :admin do

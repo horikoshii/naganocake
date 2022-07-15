@@ -1,7 +1,8 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    @customer = Customer.all
+    @customers = Customer.all
+    @customer = Customer.find_by(params[:id])
   end
 
   def show

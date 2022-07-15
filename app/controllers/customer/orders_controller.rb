@@ -6,7 +6,14 @@ class Customer::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.order.all
+    @orders = Order.all
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @subtotal = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price } + 800
   end
 
   def comfirm
@@ -31,10 +38,23 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.customer_id = current_customer.id
-    @order.save
-    redirect_to orders_comfirm_path
+    cart_items = current_customer.cart_items.all
+    @order = current_customer.order.new(order_params)
+    if @order.save
+      cart_items.each do |cart_item|
+        order = Order.new
+        order.item_id = cart_item.item_id
+        order.order_id = @order.id
+        order.order_amount = cart_item.amount
+        order.order_price = cart_item.item.price
+        order.save
+      end
+       redirect_to orders_complete_path
+       cart_items.destroy_all
+    else
+      @order = Order.new(order_params)
+      render :new
+    end
   end
 
   private
