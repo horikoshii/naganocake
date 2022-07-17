@@ -11,7 +11,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @item = Item.all
+    @items = Item.all
   end
 
   def show

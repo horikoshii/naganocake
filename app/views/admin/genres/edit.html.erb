@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12"><h4>ジャンル編集</h4></div>
-  </div>
-  <div class="col-lg-12">
-    <h4>ジャンル名</h4>
+   <div class="col-lg-12">
+    <h4>ジャンル編集</h4>
     <table class="table table-striped">
+     <tr>
       <%= form_with model: @genre, url:admin_genre_path,method: :PATCH do |f| %>
+      <td>ジャンル名</td>
       <td><%= f.text_field :name %></td>
       <td><%= f.submit '変更を保存' %></td>
       <% end %>
+     </tr>
     </table>
+   </div>
   </div>
 </div>

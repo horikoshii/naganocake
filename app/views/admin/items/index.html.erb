@@ -1,7 +1,20 @@
 <div class="container">
  <div class="row">
+  <div class="col-lg-12">
+   <table class="table table-striped">
+    <tr>
+     <td><h4>商品一覧</h4></td>
+     <td>
+     <%= link_to new_admin_item_path do %>
+     <i class="fa-solid fa-circle-plus"><span>new</span></i>
+     <% end %>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </div>
+ <div class="row">
   <table class="table table-striped">
-   <h2>商品一覧</h2>
    <thead>
     <tr>
      <th>商品id</th>
@@ -12,21 +25,23 @@
     </tr>
    </thead>
 
-  <tbody>
-   <% @item.each do |items| %>
-    <tr>
-     <td><%= items.id %></td>
-     <td><%= items.name %></td>
-     <td><%= items.price %></td>
-     <td><%= items.genre.name %></td>
-     <td>
-      <% if items.is_active %>
-      <p>販売中</p>
-      <% else %>
-      <p>販売停止中</p>
-      <% end %>
-     </td>
-    </tr>
-   <% end %>
-  </tbody>
- </table>
+   <tbody>
+    <% @items.each do |item| %>
+     <tr>
+      <td><%= item.id %></td>
+      <td><%= link_to item.name, admin_item_path(item.id) %></td>
+      <td><%= item.price %></td>
+      <td><%= item.genre.name %></td>
+      <td>
+       <% if item.is_active %>
+       <p>販売中</p>
+       <% else %>
+       <p>販売停止中</p>
+       <% end %>
+      </td>
+     </tr>
+    <% end %>
+   </tbody>
+  </table>
+ </div>
+</div>

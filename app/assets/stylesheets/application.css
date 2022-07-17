@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+.flexbox-container-vertical-center {
+    display: flex; /* 変更なし */
+    flex-direction: column; /* 変更なし */
+    justify-content: center; /* 変更なし */
+    align-items: center; /* 変更なし */
+    width: 100px; /* 変更なし */
+    height: 50px; /* 変更なし */
+  }
