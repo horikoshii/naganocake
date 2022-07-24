@@ -8,7 +8,7 @@
 
    <tbody>
     <% @genres.each do |genre| %>
-    <p><%= genre.name %></p>
+    <p><%= link_to genre.name, serch_path(genre_id: genre.id) %></p>
     <% end %>
    </tbody>
   </div>
@@ -37,12 +37,14 @@
    </table>
 
    <div class="row">
-    <h2>新着商品</h2>
+    <h4><strong>新着商品</strong></h4>
+   </div>
+   <div class="row">
     <% @items.each do |item| %>
 
-    <div class="col-lg-2">
+    <div class="col-lg-3">
      <p><%= image_tag item.image, size: "200x200" %></p>
-     <p><%= item.name %></p>
+     <p><%= link_to item.name,item_path(item.id) %></p>
      <p><%= item.price %></p>
     </div>
 

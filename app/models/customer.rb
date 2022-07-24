@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
   has_many :cart_items
+  has_many :addresses
 
   belongs_to :order,optional: true
 

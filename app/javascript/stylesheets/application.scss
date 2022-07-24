@@ -1,2 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.row{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.container0 {
+  display: flex;
+  margin-top: 100px;
+  text-align: center;
+  justify-content: center;
+}

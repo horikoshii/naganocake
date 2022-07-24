@@ -23,14 +23,21 @@ class Customer::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_number] == "2"
-      address = Address.find_by(params[:address_id])
+      address = Address.find(params[:order][:address_id])
       @order.postal_code = address.postal_code
       @order.address = address.address
       @order.name = address.name
     elsif params[:order][:address_number] == "3"
-      @order.postal_code = Address.new
-      @order.address = Address.new
-      @order.name = Address.new
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
+      @address = Address.new(
+                  postal_code: params[:order][:postal_code],
+                  address: params[:order][:address],
+                  name: params[:order][:name],
+                  customer_id: current_customer.id
+                  )
+      @address.save
     end
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @subtotal = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
