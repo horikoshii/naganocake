@@ -19,11 +19,14 @@
       <% @orders.each do |order| %>
       <tr>
         <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= orders.address %></td>
-        <td><%= orders.item %></td>
-        <td><%= orders.payment_method %></td>
-        <td><%= order.status_i18n %></td>
-        <td><%= button_to "表示する", order_path(order.id) %></td>
+        <td><%= order.address %><br>
+        <%= order.name %></td>
+        <td><% order.order_details.each do |order_detail| %>
+        <%= order_detail.item.name %><br>
+        <% end %></td>
+        <td><%= (order.order_details.inject(0) { |sum, order_detail| sum + order_detail.subtotal } + 800).round.to_s(:delimited) %></td>
+        <td></td>
+        <td><%= button_to "表示する", order_path(order.id),method: :get %></td>
       </tr>
       <% end %>
      </tbody>

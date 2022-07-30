@@ -29,7 +29,7 @@
        <% end %>
       </td>
       <td><%= cart_item.subtotal %></td>
-      <td><%= button_to "削除", cart_items_destroy_path,method: :delete %></td>
+      <td><%= button_to "削除", cart_item_path(cart_item.id),method: :delete %></td>
      </tr>
      <% end %>
     </tbody>
@@ -39,7 +39,7 @@
  <div class="row">
   <div class="col-lg-12">
    <table class="table table-striped">
-     <td><%= button_to "買い物を続ける", items_path %></td>
+     <td><%= button_to "買い物を続ける", items_path,method: :get %></td>
      <td>合計金額</td>
      <td><%= @total.round.to_s(:delimited) %></td>
    </table>

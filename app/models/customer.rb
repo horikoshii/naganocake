@@ -2,7 +2,7 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :addresses
 
-  belongs_to :order,optional: true
+  has_many :orders
 
   def full_name
     this.last_name + this.first_name
