@@ -6,15 +6,13 @@ class Customer::OrdersController < ApplicationController
   end
 
   def index
-    @order_details = OrderDetail.all
     @orders = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
-    @cart_items = CartItem.where(customer_id: current_customer.id)
-    @subtotal = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price } + 800
+    @subtotal = @order.order_details.inject(0) { |sum, order_detail| sum + order_detail.subtotal }
+    @total = @order.order_details.inject(0) { |sum, order_detail| sum + order_detail.subtotal } + 800
   end
 
   def comfirm
